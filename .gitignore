@@ -1,3 +1,7 @@
+###################
+# OCLIF Generated #
+###################
+
 *-debug.log
 *-error.log
 /.nyc_output
@@ -6,3 +10,27 @@
 /package-lock.json
 /tmp
 node_modules
+
+
+######################
+# OS GENERATED FILES #
+######################
+
+._*
+.DS_Store
+.DS_Store?
+.Spotlight-V100
+.Trashes
+Desktop.ini
+ehthumbs.db
+Icon^M^M
+Thumbs.db
+
+
+################
+# TEXT EDITORS #
+################
+
+.idea
+.vscode
+
