@@ -14,6 +14,9 @@ export default class MultiCommand extends Command {
 
   async run () {
     const {flags} = this.parse(MultiCommand);
+
+
+
     let app = await this.heroku.get<Heroku.App>(`/apps/${flags.app}`);
 
     console.dir(app)
