@@ -2,23 +2,29 @@
 // this inherits from @oclif/command but extends it with Heroku-specific functionality
 import {Command, flags} from '@heroku-cli/command'
 import * as Heroku from '@heroku-cli/schema'
+import * as os from "os";
 
 export default class MultiCommand extends Command {
 
   static description = 'Display config vars for specified Heroku apps';
+  static args = [
+    {name: 'apps'},
+  ];
 
   static flags = {
-    remote: flags.remote(),
-    app: flags.app({required: true})
-  }
+    remote: flags.remote()
+  };
 
   async run () {
-    const {flags} = this.parse(MultiCommand);
+    const {args} = this.parse(MultiCommand);
 
+    args.apps.split(',').forEach(async (app: string) => {
+      // https://devcenter.heroku.com/articles/platform-api-reference#config-vars
+      let appConfigVarsResponse = await this.heroku.get<Heroku.App>(`/apps/${app}/config-vars`);
 
-
-    let app = await this.heroku.get<Heroku.App>(`/apps/${flags.app}`);
-
-    console.dir(app)
+      console.log(`${app} Config Vars:`);
+      console.log(appConfigVarsResponse.body);
+      console.log(os.EOL);
+    });
   }
 }
