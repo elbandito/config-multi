@@ -15,15 +15,22 @@ export default class MultiCommand extends Command {
     remote: flags.remote()
   };
 
-  async run () {
+  async run() {
     const {args} = this.parse(MultiCommand);
 
+    // FIXME: Break-up into separate service
     args.apps.split(',').forEach(async (app: string) => {
       // https://devcenter.heroku.com/articles/platform-api-reference#config-vars
       let appConfigVarsResponse = await this.heroku.get<Heroku.App>(`/apps/${app}/config-vars`);
 
       console.log(`${app} Config Vars:`);
-      console.log(appConfigVarsResponse.body);
+      console.log('===========================================');
+      for (let key in appConfigVarsResponse.body) {
+        console.log(key + "=" + appConfigVarsResponse.body[key]);
+
+      }
+
+      console.log(JSON.stringify(appConfigVarsResponse.body));
       console.log(os.EOL);
     });
   }
