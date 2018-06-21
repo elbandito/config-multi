@@ -1,9 +1,9 @@
 {
-  "name": "multi",
+  "name": "config-multi",
   "description": "Display config vars for multiple apps",
   "version": "0.0.0",
   "author": "Travis Longoria",
-  "bugs": "https://github.com/elbandito/multi/issues",
+  "bugs": "https://github.com/elbandito/config-multi/issues",
   "dependencies": {
     "@heroku-cli/command": "^8.1.26",
     "@oclif/command": "^1",
