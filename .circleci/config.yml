@@ -36,7 +36,7 @@ jobs:
 
 workflows:
   version: 2
-  "multi":
+  "config-multi":
     jobs:
       - node-latest
       - node-8
