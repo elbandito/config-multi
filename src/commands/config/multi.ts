@@ -4,6 +4,8 @@ import * as os from 'os'
 
 export default class MultiCommand extends Command {
   static description = 'Display config vars for Heroku apps'
+  static example = '$ heroku config:multi blooming-house-53,mysterious-dog-92'
+
   static args = [
     {
       name: 'apps',

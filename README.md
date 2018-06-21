@@ -12,30 +12,30 @@ Display config vars for multiple apps
 [![License](https://img.shields.io/npm/l/config-multi.svg)](https://github.com/elbandito/config-multi/blob/master/package.json)
 
 <!-- toc -->
-* [Usage](#usage)
+* [Requirements](#requirements)
+* [Install](#install)
 * [Commands](#commands)
+* [Usage](#usage)
 <!-- tocstop -->
-# Usage
+# Requirements
+* Install [Heroku CLI](https://devcenter.heroku.com/articles/heroku-cli#download-and-install)
+
+# Install
 <!-- usage -->
 ```sh-session
-$ npm install -g config-multi
-$ oclif-example COMMAND
-running command...
-$ oclif-example (-v|--version|version)
-multi/0.0.0 darwin-x64 node-v9.4.0
-$ oclif-example --help [COMMAND]
-USAGE
-  $ oclif-example COMMAND
-...
+$ git clone https://github.com/elbandito/config-multi.git
+$ yarn
+$ heroku plugins:link
 ```
 <!-- usagestop -->
 # Commands
-<!-- commands -->
-* [`oclif-example hello [FILE]`](#oclif-example-hello-file)
+## `heroku config:multi [APPS]`
 
-## `oclif-example hello [FILE]`
+Displays the config vars for each of the specified Heroku applications.  The list of applications are passed in as a comma `,` 
+separated list e.g. `app1,app2,appN`.  Click [here](https://devcenter.heroku.com/articles/config-vars) for more information on
+Heroku config vars.
 
-describe the command here
+# Usage
 
 ```
 Display config vars for Heroku apps
@@ -50,16 +50,16 @@ EXAMPLE
   $ heroku config:multi blooming-house-53,mysterious-dog-92
   
   blooming-house-53 Config Vars:
-  ===========================================
+  ================================
   LANG=en_US.UTF-8
   RACK_ENV=production
   RAILS_ENV=production
   RAILS_SERVE_STATIC_FILES=enabled  
   
   mysterious-dog-92 Config Vars:
-  ===========================================
+  ================================
   NPM_CONFIG_PRODUCTION=false
 ```
 
-_See code: [src/commands/hello.ts](https://github.com/elbandito/multi/blob/v0.0.0/src/commands/hello.ts)_
+_See code: [src/commands/config/multi.ts](https://github.com/elbandito/config-multi/blob/master/src/commands/config/multi.ts)_
 <!-- commandsstop -->
