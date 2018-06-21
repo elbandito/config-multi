@@ -24,6 +24,7 @@ Display config vars for multiple apps
 <!-- usage -->
 ```sh-session
 $ git clone https://github.com/elbandito/config-multi.git
+$ cd config-multi
 $ yarn
 $ heroku plugins:link
 ```
