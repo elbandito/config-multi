@@ -13,7 +13,6 @@ export default class MultiCommand extends Command {
   ]
 
   async run() {
-    if (!this.heroku.auth) this.userNotAuthenticated()
     const {args} = this.parse(MultiCommand)
 
     for (const app of args.apps.split(',')) {
@@ -39,9 +38,5 @@ export default class MultiCommand extends Command {
     })
 
     this.log(os.EOL)
-  }
-
-  userNotAuthenticated() {
-    this.error('not logged in', {exit: 100})
   }
 }
