@@ -5,7 +5,6 @@ import * as os from 'os'
 export default class MultiCommand extends Command {
   static description = 'Display config vars for Heroku apps'
   static example = '$ heroku config:multi blooming-house-53,mysterious-dog-92'
-
   static args = [
     {
       name: 'apps',
@@ -27,12 +26,12 @@ export default class MultiCommand extends Command {
     }
   }
 
-  appNotFound(app: string) {
+  private appNotFound(app: string) {
     this.log(`Couldn't find application: '${app}'`)
     this.log(os.EOL)
   }
 
-  printAppConfigVars(app: string, configVars: any) {
+  private printAppConfigVars(app: string, configVars: any) {
     this.log(`${app} Config Vars:`)
     this.log('===========================================')
     Object.keys(configVars).forEach((key: string) => {
