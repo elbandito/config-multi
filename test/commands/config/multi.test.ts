@@ -20,9 +20,9 @@ describe('config:multi', () => {
       .get('/apps/unknown-unicorn/config-vars')
       .reply(404, {NPM_CONFIG_PRODUCTION: false})
     )
-    .stdout()
+    .stderr()
     .command(['config:multi', 'unknown-unicorn'])
     .it('should inform user if app is not found', ctx => {
-      expect(ctx.stdout).to.contain('Couldn\'t find application: \'unknown-unicorn\'')
+      expect(ctx.stderr).to.contain('Couldn\'t find application: \'unknown-unicorn\'')
     })
 })
